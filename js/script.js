@@ -1,6 +1,7 @@
 const canvas = document.querySelector('canvas')
 const ctx = canvas.getContext("2d")
 
+const audio = new Audio('../assets/audio.mp3')
 const size = 30
 
 const snake = [
@@ -97,13 +98,14 @@ const drawGrid = () => {
 checkEat = () => {
     const head = snake[snake.length - 1]
 
-    if(head.x == food.x && head.y == food.y){
+    if (head.x == food.x && head.y == food.y) {
         snake.push(head)
+        audio.play()
 
         let x = randomPosition()
         let y = randomPosition()
 
-        while(snake.find((position) => position.x == x && position.y== y)){
+        while (snake.find((position) => position.x == x && position.y == y)) {
             x = randomPosition()
             y = randomPosition()
         }
